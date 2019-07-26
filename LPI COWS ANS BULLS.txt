@@ -1,0 +1,202 @@
+import random
+
+
+def numero_gerado():
+
+    '''Esta função vai dar o numero que se pretende adivinhar'''
+
+    #lista1 = [0,1,2,3,4,5,6,7,8,9]
+    #print(sample(lista1,4))
+    
+    composiçao_numero = random.sample("0123456789",4)
+
+    composiçao_numero = "".join(composiçao_numero)
+
+
+    return(composiçao_numero)
+
+
+
+def input_jogador():
+
+    '''Esta função aceita o input e 
+    compara-a a todos os erros possiveis'''
+
+    while(True):
+
+        try:
+
+            global numero_jogador
+
+            z = numero_jogador = input("INTRODUZA UM NUMERO ""sem espaços"":")
+            
+            if numero_jogador.isdigit() and len(numero_jogador) == 4:
+                  break
+
+            z = int(z)
+
+            
+          #  def jogador():
+
+
+   # while(True):
+
+      #  numero = input("INTRODUZA UM NUMERO ")
+            
+     #   if (numero.isdigit()) and (len(numero) == 4):
+        
+        #    break  
+       # else:
+      #      print('erro so aceita 4 digitos ')
+   # return numero
+
+
+#print(jogador())
+
+            '''Esta condição verifica 
+            se o numero tem 4 digitos'''
+
+            if(len(numero_jogador) != 4):
+
+                print("Introduza um numero com 4 digitos")
+
+                continue
+
+        except erro_de_valor:
+
+            '''Esta parte trata do erro de 
+            se introduzir letras em vez de numeros'''
+
+            print("O que introduziste nao é um numero")
+
+        else:
+
+            x = 0
+
+            for i in range(0,4):
+
+                x = x + numero_jogador.count(numero_jogador[i])
+
+            '''Esta condiçao verifica se os 
+            digitos do numero estao repetidos'''
+
+            if(x != 4):
+
+                print("Introduza numero com digitos diferentes")
+
+                continue
+
+            else:
+
+                return
+
+
+
+def comparaçao_numeros(a,b):
+
+    '''Esta funçao conta o 
+    numero de vacas e touros'''
+
+    a = str(a)
+
+    b = str(b)
+
+    for i in range(0,4):
+
+        for j in range(0,4):
+
+            if(i == j)and(a[i] == b[j]):
+
+                global vaca_contagem
+
+                vaca_contagem += 1
+
+            elif(i != j)and(a[i] == b[j]):
+
+                global touro_contagem
+
+                touro_contagem += 1
+
+            else:
+
+                pass
+
+
+
+#Esta é a funçao principal
+
+print("------VACAS E TOUROS------")
+
+print('''REGRAS:
+
+1. O NUMERO QUE INTRODUZIR TEM DE TER 4 DIGITOS DIFERENTES
+
+2. SE O VALOR E O CORRETO NO LUGAR CORRETO , DE ACORDO 
+COM O NUMERO GERADO PELO COMPUTADOR, E CONTADO COMO VACA
+
+3. SE O VALOR NAO ESTIVER NO LUGAR CORRETO, DE ACORDO COM
+O NUMERO GERADO PELO COMPUTADOR, ISTO E CONTADO COMO TOURO''')
+
+print("DIVIRTA-SE...")
+
+numero_jogador = 0
+
+escolha_jogador = True
+
+while(escolha_jogador):
+
+    touro_contagem = 0
+
+    vaca_contagem = 0
+
+    numero_jogo = numero_gerado()
+
+    #print(numero_jogo)
+
+    tentativas = 0
+
+    while(True):
+
+        input_jogador()
+
+        tentativas = tentativas + 1
+
+        comparaçao_numeros(numero_jogo,numero_jogador)
+
+        if(vaca_contagem == 4):
+
+            print("GANHASTE")
+
+            print("ACERTOU O NUMERO EM ",str(tentativas),"TENTATIVAS")
+
+            print("QUER JOGAR DE NOVO?")
+
+            print("PRIMA \"s\" PARA JOGAR DE NOVO")
+
+            print("PRIMA QUALQUER OUTRA COISA PARA SAIR")
+
+            choice = input("INTRODUZA A SUA ESCOLHA: ")
+
+            if(choice == "s"):
+
+                escolha_jogador = True
+
+            else:
+
+                escolha_jogador = False
+
+            break
+
+        else:
+
+            print("touro_contagem",touro_contagem)
+
+            print("vaca_contagem",vaca_contagem)
+
+            touro_contagem = 0
+
+            vaca_contagem = 0
+
+#Bernardo_Augusto
+#2814
+#Bioinf11
