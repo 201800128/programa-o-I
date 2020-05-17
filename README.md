@@ -1,4 +1,4 @@
-# Jogo Touros e Vacas/ Cows and Bulls Game
+# Cows and Bulls Game
 Python
 
 # What is this?
